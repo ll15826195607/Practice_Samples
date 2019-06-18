@@ -1,0 +1,36 @@
+﻿<Window x:Class="TextBlockStyleWithToolTip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextBlockStyleWithToolTip"
+        xmlns:converter="clr-namespace:TextBlockStyleWithToolTip.Converter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <converter:ToolTipVisibilityConverter x:Key="ToolTipVisibilityConverter"/>
+        <ToolTip x:Key="ToolTipStyle" 
+                 Visibility="{Binding RelativeSource={RelativeSource Self}, 
+            Path=PlacementTarget, 
+            Converter={StaticResource ToolTipVisibilityConverter}}"
+                 DataContext="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=PlacementTarget}">
+            <ToolTip.Content>
+                <TextBlock Text="{Binding Text}"
+                           MaxWidth="{Binding ActualWidth}"
+                           TextWrapping="Wrap"/>
+            </ToolTip.Content>
+        </ToolTip>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+            <Setter Property="ToolTipService.ShowDuration" Value="86400000"/>
+            <Setter Property="ToolTip" Value="{StaticResource ToolTipStyle}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TextBlock x:Name="TBTips"
+                   Margin="5,0"
+                   Text="这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试"
+                   Style="{StaticResource TextBlockStyle}"/>
+    </Grid>
+</Window>

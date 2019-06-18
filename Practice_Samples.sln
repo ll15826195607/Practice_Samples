@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{482A0EB4-EF7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCompeleteTextBox", "AutoCompeleteTextBox\AutoCompeleteTextBox.csproj", "{31D26F1E-AE67-4027-B6AF-D5EBE0F3E22E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextBlockStyleWithToolTip", "TextBlockStyleWithToolTip\TextBlockStyleWithToolTip.csproj", "{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{31D26F1E-AE67-4027-B6AF-D5EBE0F3E22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D26F1E-AE67-4027-B6AF-D5EBE0F3E22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D26F1E-AE67-4027-B6AF-D5EBE0F3E22E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{4F45A6A3-3AB2-46E8-9453-5D843EAEBEDD} = {79B9A5DC-0965-4EC6-BE78-204C42505FD6}
 		{91AEB1E2-4F8E-4098-922E-FC06ADD4019A} = {79B9A5DC-0965-4EC6-BE78-204C42505FD6}
 		{31D26F1E-AE67-4027-B6AF-D5EBE0F3E22E} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
+		{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
