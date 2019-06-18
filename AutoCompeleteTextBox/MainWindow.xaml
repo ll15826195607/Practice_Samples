@@ -1,0 +1,201 @@
+﻿<Window x:Class="AutoCompeleteTextBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:local="clr-namespace:AutoCompeleteTextBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Style TargetType="ListBoxItem" x:Key="SuggestionItemStyle">
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="ContentBorder"
+                                BorderThickness="0"
+                                Background="#e62b8fcc">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                 Value="True">
+                                <Setter Property="IsSelected"
+                                    Value="True" />
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                 Value="True">
+                                <Setter Property="Background"
+                                        TargetName="ContentBorder"
+                                        Value="#ff6f85ff" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="AutoCompleteComboBoxStyle" TargetType="input:AutoCompleteBox">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="IsTextCompletionEnabled" Value="True"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MinimumPrefixLength" Value="0" />
+            <Setter Property="Background" Value="#FF1F3B53"/>
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="BorderBrush" Value="#80ffffff"/>
+            <Setter Property="Background" Value="#262cbdff"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="input:AutoCompleteBox">
+                        <Grid>
+                            <TextBox x:Name="Text" 
+                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="BorderBrush" Value="#80ffffff"/>
+                                        <Setter Property="Background" Value="#262cbdff"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="CaretBrush" Value="White"/>
+                                        <Setter Property="Focusable" Value="True"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="TextBox">
+                                                    <Border x:Name="border" 
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            Background="{TemplateBinding Background}"
+                                                            CornerRadius="3">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Source="/Images/user.png"
+                                                                       Height="14"
+                                                                       Width="10"
+                                                                       Margin="5,0"
+                                                                       VerticalAlignment="Center"/>
+                                                                <TextBlock Text="账户" 
+                                                                           VerticalAlignment="Center" 
+                                                                           Margin="5,0" 
+                                                                           Foreground="White"/>
+                                                            </StackPanel>
+                                                            <ScrollViewer Margin="0"
+                                                                          Grid.Column="1"
+                                                                          VerticalContentAlignment="Center"
+                                                                          x:Name="PART_ContentHost"/>
+                                                        </Grid>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="BorderBrush" Value="#ffffffff"/>
+                                                            <Setter Property="Cursor" Value="IBeam"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                            <Popup x:Name="Popup"
+                                   IsOpen="{Binding Path=IsDropDownOpen,Mode=TwoWay}"
+                                   HorizontalOffset="0"
+                                   MinHeight="25"
+                                   MaxHeight="100"
+                                   PopupAnimation="Slide"
+                                   Focusable="False">
+                                <Grid Background="Wheat">
+                                    <ListBox x:Name="Selector"
+                                             ItemContainerStyle="{StaticResource ResourceKey=SuggestionItemStyle}"
+                                             ItemTemplate="{TemplateBinding ItemTemplate}"
+                                             Focusable="False"
+                                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                             ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                        <ListBox.Style>
+                                            <Style TargetType="ListBox">
+                                                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListBox">
+                                                            <Border BorderThickness="1" BorderBrush="White" CornerRadius="3">
+                                                                <ScrollViewer Margin="0"
+                                                                              Focusable="false">
+                                                                    <StackPanel Margin="0"
+                                                                                IsItemsHost="True" />
+                                                                </ScrollViewer>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListBox.Style>
+                                    </ListBox>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBoxSkin" TargetType="TextBox">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#262cbdff"/>
+            <Setter Property="BorderBrush" Value="#6637c3ff"/>
+            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Padding" Value="2,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3">
+                            <Grid>
+                                <ScrollViewer Margin="0"
+                                          Grid.Column="1"
+                                          x:Name="PART_ContentHost" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#ff37c3ff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/bg.jpg"/>
+        </Grid.Background>
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <input:AutoCompleteBox Width="280"
+                                   Height="40"
+                                   VerticalContentAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FilterMode="None"
+                                   Style="{StaticResource AutoCompleteComboBoxStyle}"
+                                   IsTextCompletionEnabled="True"
+                                   x:Name="acb"/>
+        </StackPanel>
+    </Grid>
+</Window>
