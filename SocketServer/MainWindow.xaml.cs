@@ -32,7 +32,6 @@ namespace SocketServer
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.lbInfo.Items.Insert(0, Thread.CurrentThread.ManagedThreadId);
             this.tbIp.Text = GetLocalIPAddress();
         }
 
@@ -72,11 +71,18 @@ namespace SocketServer
                         break;
                     case "btnSend":
                         {
+                            String mess = this.tbSend.Text;
+                            if (String.IsNullOrEmpty(mess))
+                            {
+                                AddMessage("发送消息不能为空");
+                                return;
+                            }
+                            this.tbSend.Clear();
                             foreach (var prox in proxSockets)
                             {
                                 if (prox.Connected)
                                 {
-                                    byte[] data = Encoding.Default.GetBytes(tbSend.Text);
+                                    byte[] data = Encoding.Default.GetBytes(mess);
                                     prox.Send(data, 0, data.Length, SocketFlags.None);
                                 }
                             }
@@ -93,18 +99,13 @@ namespace SocketServer
             Socket server = ar.AsyncState as Socket;
 
             Socket client =  server.EndAccept(ar);
-            if (client != null && proxSockets.Contains(client) ==false)
+            if (client != null && proxSockets.Contains(client) == false)
             {
+                AddMessage(String.Format("{0}客户端已连接", client.RemoteEndPoint.ToString()));
                 proxSockets.Add(client);
             }
             client.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, messageCallback, client);
             server.BeginAccept(ConnectAccept, server);
-
-            Int32 tid = Thread.CurrentThread.ManagedThreadId;
-            this.Dispatcher.Invoke(new Action(() =>
-            {
-                this.lbInfo.Items.Insert(0, tid);
-            }));
         }
 
         private void messageCallback(IAsyncResult ar)
@@ -118,11 +119,17 @@ namespace SocketServer
                 // Read the incomming message 
                 byte[] messageBuffer = new byte[1024];
                 int bytesReceived = client.Receive(messageBuffer);
-
-
-                // Start to receive messages again
-                client.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, messageCallback, client);
-
+                if (bytesReceived == 0 && proxSockets.Contains(client) == true)
+                {
+                    AddMessage(String.Format("{0}客户端退出", client.RemoteEndPoint.ToString()));
+                    proxSockets.Remove(client);
+                }
+                else
+                {
+                    AddMessage(string.Format("接收到客户端：{0}的消息是{1}", client.RemoteEndPoint.ToString(), Encoding.Default.GetString(messageBuffer, 0, bytesReceived)));
+                    // Start to receive messages again
+                    client.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, messageCallback, client);
+                }
             }
             catch (Exception ex)
             {
@@ -130,6 +137,14 @@ namespace SocketServer
                 client.Dispose();
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void AddMessage(String info)
+        {
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                this.lbInfo.Items.Insert(0, info);
+            }));
         }
     }
 }

@@ -1,0 +1,30 @@
+﻿<Window x:Class="CustomFont.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomFont"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <TextBlock Text="这艘船的甲板上弥漫着银白色的薄雾。" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="40" 
+                   FontFamily="{DynamicResource MaShanZheng}"
+                   Margin="0,10"/>
+        <TextBlock Text="月亮的脸掩映在阴影中。" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="40" 
+                   FontFamily="{DynamicResource LiuJianMaoCao}"
+                   Margin="0,10"/>
+        <TextBlock Text="她透过窗户目不转睛地仰望着星星。" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="40" 
+                   FontFamily="{DynamicResource LongCang}"
+                   Margin="0,10"/>
+    </StackPanel>
+</Window>

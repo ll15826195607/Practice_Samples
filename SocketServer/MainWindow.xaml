@@ -17,7 +17,6 @@
                     VerticalAlignment="Center">
             <TextBlock Text="IP:" Margin="5,0" VerticalAlignment="Center"/>
             <TextBox  Width="200" Margin="5,0" x:Name="tbIp"
-                      Text="192.168.0.108"
                       VerticalContentAlignment="Center"
                       Height="24"/>
             <TextBlock Text="Port" Margin="5,0"
