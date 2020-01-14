@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28922.388
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Socket", "Socket", "{79B9A5DC-0965-4EC6-BE78-204C42505FD6}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketServer", "WebSocketServer\WebSocketServer.csproj", "{B9002688-F28B-42CB-8F60-412313E7B8DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomFont", "CustomFont\CustomFont.csproj", "{569E5D37-C444-4787-9D89-DA77B59B021D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiRadioButtonBinding", "MultiRadioButtonBinding\MultiRadioButtonBinding.csproj", "{B8763624-2E4E-4F55-BFCC-6D98C9B699BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{569E5D37-C444-4787-9D89-DA77B59B021D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{569E5D37-C444-4787-9D89-DA77B59B021D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{569E5D37-C444-4787-9D89-DA77B59B021D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8763624-2E4E-4F55-BFCC-6D98C9B699BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8763624-2E4E-4F55-BFCC-6D98C9B699BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8763624-2E4E-4F55-BFCC-6D98C9B699BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8763624-2E4E-4F55-BFCC-6D98C9B699BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{C7AD1DCC-39EE-48F7-8CEB-6A59F9CDCE4A} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
 		{B9002688-F28B-42CB-8F60-412313E7B8DC} = {79B9A5DC-0965-4EC6-BE78-204C42505FD6}
 		{569E5D37-C444-4787-9D89-DA77B59B021D} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
+		{B8763624-2E4E-4F55-BFCC-6D98C9B699BF} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}

@@ -1,0 +1,27 @@
+﻿<Window x:Class="MultiRadioButtonBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiRadioButtonBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid DataContext="{Binding}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <RadioButton Grid.Row="0" GroupName="directionText" Margin="5" VerticalAlignment="Center" Content="North"
+                     IsChecked="{Binding Direction, Converter={local:EnumToBool}, ConverterParameter={x:Static local:Direction.North}}"/>
+        <RadioButton Grid.Row="1" GroupName="directionText" Margin="5" VerticalAlignment="Center" Content="East"
+                     IsChecked="{Binding Direction, Converter={local:EnumToBool}, ConverterParameter={x:Static local:Direction.Easth}}"/>
+        <RadioButton Grid.Row="2" GroupName="directionText" Margin="5" VerticalAlignment="Center" Content="West"
+                     IsChecked="{Binding Direction, Converter={local:EnumToBool}, ConverterParameter={x:Static local:Direction.West}}"/>
+        <RadioButton Grid.Row="3" GroupName="directionText" Margin="5" VerticalAlignment="Center" Content="South"
+                     IsChecked="{Binding Direction, Converter={local:EnumToBool}, ConverterParameter={x:Static local:Direction.South}}"/>
+        <TextBlock Grid.Row="4" Margin="5" VerticalAlignment="Center" Text="{Binding Direction}"/>
+    </Grid>
+</Window>
