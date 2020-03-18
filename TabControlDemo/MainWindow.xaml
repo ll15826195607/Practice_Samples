@@ -5,22 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TabControlDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        <TabControl>
-            <TabControl.Resources>
-                <Style TargetType="TabItem">
-                    <Setter Property="AllowDrop" Value="True"/>
-                    <EventSetter Event="PreviewMouseMove" Handler="TabItem_PreviewMouseMove"/>
-                    <EventSetter Event="Drop" Handler="TabItem_Drop"/>
-                </Style>
-            </TabControl.Resources>
-
-            <TabItem Header="Tabitem 1"/>
-            <TabItem Header="Tabitem 2"/>
-            <TabItem Header="Tabitem 3"/>
-            <TabItem Header="Tabitem 4"/>
-            <TabItem Header="Tabitem 5"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Name="btnAdd"
+                Content=" + "
+                Click="btnAdd_Click"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="5,0"/>
+        <TabControl ItemsSource="{Binding UserControls}"
+                    SelectedItem="{Binding SelectedTabModel}"
+                    Grid.Row="1">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="28">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Header}" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1"
+                                Content=" X " 
+                                Click="RemoveTabItem_Click" 
+                                BorderBrush="Green"
+                                BorderThickness="1"
+                                Width="20"
+                                Height="20"
+                                Margin="10,0,5,0"
+                                Cursor="Hand"
+                                Visibility="{Binding IsVisibility}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding Content}" />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
         </TabControl>
     </Grid>
 </Window>

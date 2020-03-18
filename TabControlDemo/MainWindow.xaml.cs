@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,44 +20,68 @@ namespace TabControlDemo
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,INotifyPropertyChanged
     {
+        public ObservableCollection<TabItemModel> UserControls { get; set; }
+        private TabItemModel selectedTabModel;
+        public TabItemModel SelectedTabModel
+        {
+            get
+            {
+                return selectedTabModel;
+            }
+            set
+            {
+                if (selectedTabModel != value)
+                {
+                    selectedTabModel = value;
+                    this.RaisePropertyChanged("SelectedTabModel");
+                }
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.UserControls = new ObservableCollection<TabItemModel>();
+            this.Loaded += MainWindow_Loaded;
         }
 
-        private void TabItem_PreviewMouseMove(object sender, MouseEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var tabItem = e.Source as TabItem;
+            this.UserControls.Add(new TabItemModel() { Header = "主页", IsVisibility = Visibility.Collapsed, Content = new Index() });
+        }
 
-            if (tabItem == null)
-                return;
-
-            if (Mouse.PrimaryDevice.LeftButton == MouseButtonState.Pressed)
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void RaisePropertyChanged(String property)
+        {
+            if (this.PropertyChanged != null)
             {
-                DragDrop.DoDragDrop(tabItem, tabItem, DragDropEffects.All);
+                this.PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
 
-        private void TabItem_Drop(object sender, DragEventArgs e)
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var tabItemTarget = e.Source as TabItem;
-
-            var tabItemSource = e.Data.GetData(typeof(TabItem)) as TabItem;
-
-            if (!tabItemTarget.Equals(tabItemSource))
+            TabItemModel tabModel;
+            if (this.UserControls.Count % 2 == 1)
             {
-                var tabControl = tabItemTarget.Parent as TabControl;
-                int sourceIndex = tabControl.Items.IndexOf(tabItemSource);
-                int targetIndex = tabControl.Items.IndexOf(tabItemTarget);
+                tabModel = new TabItemModel() { Header = "用户控件1", Content = new UserControl1() };
 
-                tabControl.Items.Remove(tabItemSource);
-                tabControl.Items.Insert(targetIndex, tabItemSource);
-
-                tabControl.Items.Remove(tabItemTarget);
-                tabControl.Items.Insert(sourceIndex, tabItemTarget);
             }
+            else
+            {
+                tabModel = new TabItemModel() { Header = "用户控件2", Content = new UserControl2() };
+
+            }
+            this.UserControls.Add(tabModel);
+            this.SelectedTabModel = tabModel;
+        }
+
+        private void RemoveTabItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.UserControls.Remove(this.SelectedTabModel);
         }
     }
 }
