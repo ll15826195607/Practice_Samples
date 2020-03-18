@@ -22,24 +22,45 @@ namespace MenuDemo
     /// </summary>
     public partial class MainWindow : Window,INotifyPropertyChanged
     {
-        public ObservableCollection<Function> FileMms { get; private set; }
-        public ObservableCollection<Function> EditMms { get; private set; }
+        public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            this.FileMms = new ObservableCollection<Function>();
             this.DataContext = this;
-            this.EditMms = new ObservableCollection<Function>();
+            this.MenuItems = new ObservableCollection<MenuItemViewModel>();
             this.Loaded += MainWindow_Loaded;
         }
 
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.FileMms.Add(new Function() { Name = "警卫任务" });
-            this.FileMms.Add(new Function() { Name = "网络状态" });
-            this.EditMms.Add(new Function() { Name = "附属设备" });
-            this.EditMms.Add(new Function() { Name = "基础控制" });
+            this.MenuItems.Add(new MenuItemViewModel { Header = "Alpha",
+                MenuItems = new ObservableCollection<MenuItemViewModel>
+                        {
+                            new MenuItemViewModel { Header = "Alpha1" },
+                            new MenuItemViewModel { Header = "Alpha2" },
+                            new MenuItemViewModel { Header = "Alpha3" }
+                        }
+            });
+            this.MenuItems.Add(new MenuItemViewModel
+            {
+                Header = "Beta",
+                MenuItems = new ObservableCollection<MenuItemViewModel>
+                        {
+                            new MenuItemViewModel { Header = "Beta1" },
+                            new MenuItemViewModel { Header = "Beta2" },
+                            new MenuItemViewModel { Header = "Beta3" }
+                        }
+            });
+            this.MenuItems.Add(new MenuItemViewModel { Header = "Gamma",
+                MenuItems = new ObservableCollection<MenuItemViewModel>
+                        {
+                            new MenuItemViewModel { Header = "Gamma1" },
+                            new MenuItemViewModel { Header = "Gamma2" },
+                            new MenuItemViewModel { Header = "Gamma3" }
+                        }
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
