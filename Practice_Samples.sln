@@ -37,6 +37,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Verification", "Verificatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringEmptyDemo", "StringEmptyDemo\StringEmptyDemo.csproj", "{61D711B2-B773-4707-8A52-E78A3DAEB0B1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Refactoring", "Refactoring", "{76FC9AB3-8C54-42A6-BCA2-C57CA929CD6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionReturnErrorDemo", "FunctionReturnErrorDemo\FunctionReturnErrorDemo.csproj", "{F5914FBC-30BD-41C7-867B-D482EA9D6576}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,10 @@ Global
 		{61D711B2-B773-4707-8A52-E78A3DAEB0B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61D711B2-B773-4707-8A52-E78A3DAEB0B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61D711B2-B773-4707-8A52-E78A3DAEB0B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5914FBC-30BD-41C7-867B-D482EA9D6576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5914FBC-30BD-41C7-867B-D482EA9D6576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5914FBC-30BD-41C7-867B-D482EA9D6576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5914FBC-30BD-41C7-867B-D482EA9D6576}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +121,7 @@ Global
 		{3B4673F4-E94A-4969-98E5-2A7F830F861C} = {864729FE-F252-464F-AB7C-89F774E28CC1}
 		{50027B91-1445-44B9-89D5-2D4C7F8AC349} = {864729FE-F252-464F-AB7C-89F774E28CC1}
 		{61D711B2-B773-4707-8A52-E78A3DAEB0B1} = {D0F476EB-6C27-4EAD-88CD-649170E9FC3A}
+		{F5914FBC-30BD-41C7-867B-D482EA9D6576} = {76FC9AB3-8C54-42A6-BCA2-C57CA929CD6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
