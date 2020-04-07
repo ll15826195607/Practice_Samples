@@ -13,23 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TabControlDemo
+namespace UserControlDemo
 {
     /// <summary>
-    /// UserControl1.xaml 的交互逻辑
+    /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class MainWindow : Window
     {
-        public UserControl1()
+        public MainWindow()
         {
             InitializeComponent();
-            this.Loaded += UserControl1_Loaded;
-        }
-
-        private void UserControl1_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.Loaded -= UserControl1_Loaded;
-
         }
     }
 }

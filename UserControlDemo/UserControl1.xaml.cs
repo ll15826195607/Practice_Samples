@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TabControlDemo
+namespace UserControlDemo
 {
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
@@ -23,13 +23,6 @@ namespace TabControlDemo
         public UserControl1()
         {
             InitializeComponent();
-            this.Loaded += UserControl1_Loaded;
-        }
-
-        private void UserControl1_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.Loaded -= UserControl1_Loaded;
-
         }
     }
 }
