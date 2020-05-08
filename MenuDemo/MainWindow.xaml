@@ -336,7 +336,7 @@
             <Menu.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=MenuItems}"
                                           DataType="{x:Type local:MenuItemViewModel}" >
-                    <Grid Height="48" Width="100" Background="Transparent">
+                    <Grid Height="84" Width="100" Background="Transparent">
                         <TextBlock Margin="1" 
                                    Text="{Binding Header}" 
                                    VerticalAlignment="Center" 

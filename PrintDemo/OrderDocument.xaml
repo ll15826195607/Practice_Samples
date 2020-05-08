@@ -1,0 +1,29 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:local="clr-namespace:PrintDemo"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+              ColumnWidth="400" 
+              FontSize="14" 
+              FontFamily="宋体">
+    <Paragraph FontSize="20" 
+               TextAlignment="Center" 
+               FontWeight="Bold">
+        <Run Text="{Binding Title, Mode=OneWay}"/>
+    </Paragraph>
+    <Table>
+        <TableRowGroup x:Name="OrderDetails">
+
+        </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="16" 
+               TextAlignment="Right" 
+               FontWeight="Bold" 
+               Margin="0,0,10,0">
+        <Run Text="{Binding Company, Mode=OneWay}"/>
+    </Paragraph>
+    <Paragraph FontSize="16" 
+               TextAlignment="Right" 
+               FontWeight="Bold" 
+               Margin="0,0,10,0">
+        <Run Text="{Binding OrderTime, Mode=OneWay}"/>
+    </Paragraph>
+</FlowDocument>

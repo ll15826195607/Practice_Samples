@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlDemo", "UserCont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{DBEAE9CB-E046-43DB-B83D-FE8C18BDE538}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintDemo", "PrintDemo\PrintDemo.csproj", "{C47AAFE2-2603-4A52-B728-BD0ADA05EBEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{DBEAE9CB-E046-43DB-B83D-FE8C18BDE538}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBEAE9CB-E046-43DB-B83D-FE8C18BDE538}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBEAE9CB-E046-43DB-B83D-FE8C18BDE538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C47AAFE2-2603-4A52-B728-BD0ADA05EBEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C47AAFE2-2603-4A52-B728-BD0ADA05EBEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C47AAFE2-2603-4A52-B728-BD0ADA05EBEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C47AAFE2-2603-4A52-B728-BD0ADA05EBEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +122,7 @@ Global
 		{7AAA59D6-7F0F-40DE-8F8C-950AAAD3C833} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
 		{63832785-1B58-4118-8864-5F7E03851F92} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
 		{DBEAE9CB-E046-43DB-B83D-FE8C18BDE538} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
+		{C47AAFE2-2603-4A52-B728-BD0ADA05EBEF} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
