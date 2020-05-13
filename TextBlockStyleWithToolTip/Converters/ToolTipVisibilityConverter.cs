@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace TextBlockStyleWithToolTip.Converter
@@ -19,11 +20,18 @@ namespace TextBlockStyleWithToolTip.Converter
             else
             {
                 FrameworkElement textBlock = (FrameworkElement)value;
-                textBlock.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
-                var width = textBlock.DesiredSize.Width;
-                if (((FrameworkElement)value).ActualWidth < width)
+                if (textBlock != null)
                 {
-                    return Visibility.Visible;
+                    textBlock.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+                    var width = textBlock.DesiredSize.Width;
+                    if (textBlock.ActualWidth < width)
+                    {
+                        return Visibility.Visible;
+                    }
+                    else
+                    {
+                        return Visibility.Collapsed;
+                    }
                 }
                 else
                 {
