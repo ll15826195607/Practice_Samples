@@ -42,7 +42,7 @@ namespace ToolKit.Wccl
     /// 步骤 2)
     /// 继续操作并在 XAML 文件中使用控件。
     ///
-    ///     <MyNamespace:NumericUpDown/>
+    /// <ToolKit.Wccl:NumericUpDown/>
     ///
     /// </summary>
     [TemplatePart(Name = "UpButtonElement", Type = typeof(RepeatButton))]
