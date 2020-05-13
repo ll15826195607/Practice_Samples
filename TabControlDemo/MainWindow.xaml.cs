@@ -40,7 +40,7 @@ namespace TabControlDemo
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var tb = new TabItemModel() { Header = "主页", IsVisibility = Visibility.Collapsed, Content = new Index() };
+            var tb = new TabItemModel() { Header = "    主页    ", IsVisibility = Visibility.Collapsed, Content = new Index() };
             this.UserControls.Add(tb);
             this.SelectedTabModel = tb;
             
