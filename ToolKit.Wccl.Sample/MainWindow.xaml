@@ -4,10 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToolKit.Wccl.Sample"
-        xmlns:wccl="clr-namespace:ToolKit.Wccl;assembly=ToolKit.Wccl"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <wccl:NumericUpDown Height="64" Width="100"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Button Margin="5" Click="Button_Click" x:Name="btnRowsPanel" Content="RowsPanel"/>
+        </Grid>
     </Grid>
 </Window>

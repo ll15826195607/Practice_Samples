@@ -24,5 +24,26 @@ namespace ToolKit.Wccl.Sample
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            if (btn != null)
+            {
+                switch (btn.Name)
+                {
+                    case "btnRowsPanel":
+                        {
+                            RowsPanelSample rowsPanelSample = new RowsPanelSample();
+                            rowsPanelSample.Owner = this;
+                            rowsPanelSample.ShowDialog();
+
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }
