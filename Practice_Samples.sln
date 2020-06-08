@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeClientDemo", "PipeClien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardMouseIdleTimeDemo", "KeyboardMouseIdleTimeDemo\KeyboardMouseIdleTimeDemo.csproj", "{BF484B53-4ADB-4C75-BA70-76423DBECE2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderDemo", "BuilderDemo\BuilderDemo.csproj", "{2FB585D9-80DB-4C52-B195-1DF8140FAF56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,10 @@ Global
 		{BF484B53-4ADB-4C75-BA70-76423DBECE2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF484B53-4ADB-4C75-BA70-76423DBECE2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF484B53-4ADB-4C75-BA70-76423DBECE2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB585D9-80DB-4C52-B195-1DF8140FAF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB585D9-80DB-4C52-B195-1DF8140FAF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB585D9-80DB-4C52-B195-1DF8140FAF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB585D9-80DB-4C52-B195-1DF8140FAF56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +182,7 @@ Global
 		{86C3BFDD-704A-4390-82E6-14180CE706CA} = {79B9A5DC-0965-4EC6-BE78-204C42505FD6}
 		{7DC77053-9522-4846-A1F1-23D3C24C61BD} = {79B9A5DC-0965-4EC6-BE78-204C42505FD6}
 		{BF484B53-4ADB-4C75-BA70-76423DBECE2B} = {482A0EB4-EF75-4979-BBD7-B0F3B35BAC94}
+		{2FB585D9-80DB-4C52-B195-1DF8140FAF56} = {F33A0872-D692-4712-857A-37B5C630E715}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
