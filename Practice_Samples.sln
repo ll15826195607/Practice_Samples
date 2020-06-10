@@ -65,9 +65,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InterprocessCommunication",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTricingDemo", "EventTricingDemo\EventTricingDemo.csproj", "{6217AAE9-1C1C-4E52-A757-EFED2C9F794D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterprocessCommunicaitonContract", "InterprocessCommunicaitonContract\InterprocessCommunicaitonContract.csproj", "{D53685C7-EB96-4A26-9D59-ECAD4C965BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterprocessCommunicaitonContract", "InterprocessCommunicaitonContract\InterprocessCommunicaitonContract.csproj", "{D53685C7-EB96-4A26-9D59-ECAD4C965BB4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTricingClient", "EventTricingClient\EventTricingClient.csproj", "{F5507121-8685-4861-9BCC-123B74B1E2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonymousPipeServer", "AnonymousPipeServer\AnonymousPipeServer.csproj", "{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonymousPipeClient", "AnonymousPipeClient\AnonymousPipeClient.csproj", "{731A3FAA-4467-4AE9-9854-5F81548D7437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -187,6 +191,14 @@ Global
 		{F5507121-8685-4861-9BCC-123B74B1E2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5507121-8685-4861-9BCC-123B74B1E2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5507121-8685-4861-9BCC-123B74B1E2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731A3FAA-4467-4AE9-9854-5F81548D7437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731A3FAA-4467-4AE9-9854-5F81548D7437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731A3FAA-4467-4AE9-9854-5F81548D7437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731A3FAA-4467-4AE9-9854-5F81548D7437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -220,6 +232,8 @@ Global
 		{6217AAE9-1C1C-4E52-A757-EFED2C9F794D} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
 		{D53685C7-EB96-4A26-9D59-ECAD4C965BB4} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
 		{F5507121-8685-4861-9BCC-123B74B1E2E4} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
+		{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
+		{731A3FAA-4467-4AE9-9854-5F81548D7437} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
