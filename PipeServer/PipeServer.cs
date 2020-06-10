@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace PipeServerDemo
 {
+    /// <summary>
+    /// 一个管道服务器实例，只能连接一个管道客服端; 可以有多个同名的管道服务实例。哪怕管道客户端关闭连接后，其它管道客户端也是无法连接到这个管道服务实例。
+    /// </summary>
     internal sealed class PipeServer
     {
         private readonly NamedPipeServerStream m_Pipe = new NamedPipeServerStream("ECHO", 
