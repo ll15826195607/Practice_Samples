@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PipeServerDemo
@@ -25,7 +26,7 @@ namespace PipeServerDemo
         {
             new PipeServer();
             m_Pipe.EndWaitForConnection(result);
-
+            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
             Byte[] data = new Byte[1000];
             m_Pipe.BeginRead(data, 0, data.Length, GetRequest, data);
         }
