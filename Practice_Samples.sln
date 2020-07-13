@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonymousPipeClient", "Anon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryDesignPattern", "FactoryDesignPattern\FactoryDesignPattern.csproj", "{8085DEB6-0EED-438C-96CA-817B21F84341}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterDesignPattern", "AdapterDesignPattern\AdapterDesignPattern.csproj", "{18193709-EB44-4FDC-968E-1934365945D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +207,10 @@ Global
 		{8085DEB6-0EED-438C-96CA-817B21F84341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8085DEB6-0EED-438C-96CA-817B21F84341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8085DEB6-0EED-438C-96CA-817B21F84341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18193709-EB44-4FDC-968E-1934365945D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18193709-EB44-4FDC-968E-1934365945D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18193709-EB44-4FDC-968E-1934365945D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18193709-EB44-4FDC-968E-1934365945D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -241,6 +247,7 @@ Global
 		{166B3CD1-8114-4EBE-A420-1EC78EE9D3D5} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
 		{731A3FAA-4467-4AE9-9854-5F81548D7437} = {45F35A88-147A-45E7-AA5F-AA71587B60B7}
 		{8085DEB6-0EED-438C-96CA-817B21F84341} = {F33A0872-D692-4712-857A-37B5C630E715}
+		{18193709-EB44-4FDC-968E-1934365945D6} = {F33A0872-D692-4712-857A-37B5C630E715}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
