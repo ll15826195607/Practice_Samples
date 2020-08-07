@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4497721-DFD4-4611-B0F3-333B1C57F2AD}</ProjectGuid>
+    <ProjectGuid>{18193709-EB44-4FDC-968E-1934365945D6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProxyDemo</RootNamespace>
-    <AssemblyName>ProxyDemo</AssemblyName>
+    <RootNamespace>AdapterDesignPattern</RootNamespace>
+    <AssemblyName>AdapterDesignPattern</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IProxyInvocationHandler.cs" />
-    <Compile Include="IUserController.cs" />
-    <Compile Include="MetaDataFactory.cs" />
-    <Compile Include="MetricsCollector.cs" />
+    <Compile Include="Adaptee.cs" />
+    <Compile Include="Adaptor.cs" />
+    <Compile Include="Adaptor2.cs" />
+    <Compile Include="ITarget.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProxyFactory.cs" />
-    <Compile Include="RequestEntity.cs" />
-    <Compile Include="SecurityManager.cs" />
-    <Compile Include="SecurityProxy.cs" />
-    <Compile Include="SimpleUserControlProxy.cs" />
-    <Compile Include="UserController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

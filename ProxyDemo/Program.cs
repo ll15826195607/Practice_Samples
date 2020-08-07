@@ -13,6 +13,7 @@ namespace ProxyDemo
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(DateTime.Now.Ticks);
             IUserController userController = (IUserController)UserControllerProxy.CreateInstance(new UserController());
             userController.Login(String.Empty, String.Empty);
             userController.Register(String.Empty);

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4497721-DFD4-4611-B0F3-333B1C57F2AD}</ProjectGuid>
+    <ProjectGuid>{8085DEB6-0EED-438C-96CA-817B21F84341}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProxyDemo</RootNamespace>
-    <AssemblyName>ProxyDemo</AssemblyName>
+    <RootNamespace>FactoryDesignPattern</RootNamespace>
+    <AssemblyName>FactoryDesignPattern</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IProxyInvocationHandler.cs" />
-    <Compile Include="IUserController.cs" />
-    <Compile Include="MetaDataFactory.cs" />
-    <Compile Include="MetricsCollector.cs" />
+    <Compile Include="IRuleConfigParser.cs" />
+    <Compile Include="JsonRuleConfigParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProxyFactory.cs" />
-    <Compile Include="RequestEntity.cs" />
-    <Compile Include="SecurityManager.cs" />
-    <Compile Include="SecurityProxy.cs" />
-    <Compile Include="SimpleUserControlProxy.cs" />
-    <Compile Include="UserController.cs" />
+    <Compile Include="RuleConfig.cs" />
+    <Compile Include="RuleConfigParserFactory.cs" />
+    <Compile Include="RuleConfigSource.cs" />
+    <Compile Include="XmlRuleConfigParser.cs" />
+    <Compile Include="YamlRuleConfigParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
