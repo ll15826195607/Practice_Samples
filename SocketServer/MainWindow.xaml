@@ -18,7 +18,8 @@
             <TextBlock Text="IP:" Margin="5,0" VerticalAlignment="Center"/>
             <TextBox  Width="200" Margin="5,0" x:Name="tbIp"
                       VerticalContentAlignment="Center"
-                      Height="24"/>
+                      Height="24"
+                      IsEnabled="False"/>
             <TextBlock Text="Port" Margin="5,0"
                        VerticalAlignment="Center"/>
             <TextBox  Width="100" Margin="5,0" x:Name="tbPort"
@@ -29,6 +30,11 @@
                      x:Name="btnStartService"
                      Width="80"
                      Height="24" Content="开启服务"/>
+            <Button  Click="Button_Click"
+                     x:Name="btnStopService"
+                     Width="80"
+                     Margin="5,0"
+                     Height="24" Content="停止服务"/>
         </StackPanel>
         <Grid Grid.Row="1">
             <ListBox x:Name="lbInfo" Margin="5,0"/>

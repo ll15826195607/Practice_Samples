@@ -23,7 +23,8 @@ namespace SocketServer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly List<Socket> proxSockets = new List<Socket>();
+        private Socket listenSocket;
+        private readonly List<SocketWrapper> proxSockets = new List<SocketWrapper>();
         public MainWindow()
         {
             InitializeComponent();
@@ -61,12 +62,43 @@ namespace SocketServer
                 {
                     case "btnStartService":
                         {
-                            Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                            IPEndPoint iep = new IPEndPoint(IPAddress.Parse(tbIp.Text), Int16.Parse(tbPort.Text));
-                            server.Bind(iep);
-                            server.Listen(10);
-                            server.BeginAccept(ConnectAccept, server);
-                            btn.IsEnabled = false;
+                            try
+                            {
+                                this.listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                                IPEndPoint iep = new IPEndPoint(IPAddress.Parse(tbIp.Text), Int16.Parse(tbPort.Text));
+                                this.listenSocket.Bind(iep);
+                                this.listenSocket.Listen(10);
+                                this.listenSocket.BeginAccept(ConnectAccept, this.listenSocket);
+                                this.btnStartService.IsEnabled = false;
+                                this.tbPort.IsEnabled = false;
+                                this.btnSend.IsEnabled = true;
+                            }
+                            catch (Exception ex)
+                            {
+                                AddMessage(ex.Message);
+                            }
+                            
+                        }
+                        break;
+                    case "btnStopService":
+                        {
+                            if (this.proxSockets != null && this.proxSockets.Count > 0)
+                            {
+                                foreach (var item in this.proxSockets)
+                                {
+                                    if (item.workSocket != null)
+                                    {
+                                        item.workSocket.Close();
+                                    }
+                                }
+                            }
+                            if (this.listenSocket != null)
+                            {
+                                this.listenSocket.Close();
+                            }
+                            this.btnStartService.IsEnabled = true;
+                            this.tbPort.IsEnabled = true;
+                            this.btnSend.IsEnabled = false;
                         }
                         break;
                     case "btnSend":
@@ -80,10 +112,10 @@ namespace SocketServer
                             this.tbSend.Clear();
                             foreach (var prox in proxSockets)
                             {
-                                if (prox.Connected)
+                                if (prox.workSocket != null && prox.workSocket.Connected)
                                 {
                                     byte[] data = Encoding.Default.GetBytes(mess);
-                                    prox.Send(data, 0, data.Length, SocketFlags.None);
+                                    prox.workSocket.Send(data, 0, data.Length, SocketFlags.None);
                                 }
                             }
                         }
@@ -96,45 +128,56 @@ namespace SocketServer
 
         private void ConnectAccept(IAsyncResult ar)
         {
-            Socket server = ar.AsyncState as Socket;
-
-            Socket client =  server.EndAccept(ar);
-            if (client != null && proxSockets.Contains(client) == false)
+            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+            try
             {
+                Socket server = ar.AsyncState as Socket;
+                Socket client = server.EndAccept(ar);
+                SocketWrapper sw = new SocketWrapper()
+                {
+                    workSocket = client
+                };
                 AddMessage(String.Format("{0}客户端已连接", client.RemoteEndPoint.ToString()));
-                proxSockets.Add(client);
+                proxSockets.Add(sw);
+                client.BeginReceive(new byte[0], 0, 0, SocketFlags.None, messageCallback, sw);
+                server.BeginAccept(ConnectAccept, server);
             }
-            client.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, messageCallback, client);
-            server.BeginAccept(ConnectAccept, server);
+            catch (Exception ex)
+            {
+                AddMessage(ex.Message);
+            }
+
         }
 
         private void messageCallback(IAsyncResult ar)
         {
-            Socket client = ar.AsyncState as Socket;
+            var sw = ar.AsyncState as SocketWrapper;
 
             try
             {
-                client.EndReceive(ar);
+                sw.workSocket.EndReceive(ar);
+                
+                int bytesReceived = sw.workSocket.Receive(sw.buffer);
+                //if (bytesReceived < sw.buffer.Length)
+                //{ 
+                //    Array.Resize<byte>(ref sw.buffer, bytesReceived);
+                //}
 
-                // Read the incomming message 
-                byte[] messageBuffer = new byte[1024];
-                int bytesReceived = client.Receive(messageBuffer);
-                if (bytesReceived == 0 && proxSockets.Contains(client) == true)
+                if (bytesReceived == 0)
                 {
-                    AddMessage(String.Format("{0}客户端退出", client.RemoteEndPoint.ToString()));
-                    proxSockets.Remove(client);
+                    AddMessage(String.Format("{0}客户端退出", sw.workSocket.RemoteEndPoint.ToString()));
+                    proxSockets.Remove(sw);
                 }
                 else
                 {
-                    AddMessage(string.Format("接收到客户端：{0}的消息是{1}", client.RemoteEndPoint.ToString(), Encoding.Default.GetString(messageBuffer, 0, bytesReceived)));
-                    // Start to receive messages again
-                    client.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, messageCallback, client);
+                    AddMessage(string.Format("接收到客户端：{0}的消息是{1}", sw.workSocket.RemoteEndPoint.ToString(), Encoding.Default.GetString(sw.buffer, 0, bytesReceived)));
+                    sw.workSocket.BeginReceive(new byte[0], 0, 0, SocketFlags.None, messageCallback, sw);
                 }
             }
             catch (Exception ex)
             {
-                client.Close();
-                client.Dispose();
+                sw.workSocket.Close();
+                sw.workSocket.Dispose();
                 Console.WriteLine(ex.Message);
             }
         }
