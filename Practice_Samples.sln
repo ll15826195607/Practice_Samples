@@ -87,6 +87,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCalculator", "TestCalculator\TestCalculator.csproj", "{3EB382CB-5EC4-47A1-9676-47E0EF2996E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SafetyRelated", "SafetyRelated", "{703DC7B2-080A-4C23-A4A9-2AB9E45A7DF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineCodeDemo", "MachineCode\MachineCodeDemo.csproj", "{B036CA5E-E485-481F-836D-D70B2F40F5DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -233,6 +237,10 @@ Global
 		{3EB382CB-5EC4-47A1-9676-47E0EF2996E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EB382CB-5EC4-47A1-9676-47E0EF2996E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EB382CB-5EC4-47A1-9676-47E0EF2996E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B036CA5E-E485-481F-836D-D70B2F40F5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B036CA5E-E485-481F-836D-D70B2F40F5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B036CA5E-E485-481F-836D-D70B2F40F5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B036CA5E-E485-481F-836D-D70B2F40F5DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -273,6 +281,7 @@ Global
 		{4D589144-769F-4872-9266-93BCC198F13E} = {1476E44D-E61A-4416-A7F8-F99A814782B9}
 		{18766AA9-CD8B-4B07-9EEE-0F3385404615} = {1476E44D-E61A-4416-A7F8-F99A814782B9}
 		{3EB382CB-5EC4-47A1-9676-47E0EF2996E4} = {1476E44D-E61A-4416-A7F8-F99A814782B9}
+		{B036CA5E-E485-481F-836D-D70B2F40F5DB} = {703DC7B2-080A-4C23-A4A9-2AB9E45A7DF9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D170A4A-7B69-44A4-A5E4-EACD77B8B4D4}
