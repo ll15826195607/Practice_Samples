@@ -7,6 +7,57 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    VerticalAlignment="Center">
+            <TextBlock Text="IP:" Margin="5,0" VerticalAlignment="Center"/>
+            <TextBox  Width="200" Margin="5,0" x:Name="tbIp"
+                      VerticalContentAlignment="Center"
+                      Height="24"
+                      IsEnabled="False"/>
+            <TextBlock Text="Port" Margin="5,0"
+                       VerticalAlignment="Center"/>
+            <TextBox  Width="100" Margin="5,0" x:Name="tbPort"
+                      Text="8080"
+                      Height="24"
+                      VerticalContentAlignment="Center"/>
+            <Button  Click="Button_Click"
+                     x:Name="btnStartService"
+                     Width="80"
+                     Height="24" Content="开启服务"/>
+            <Button  Click="Button_Click"
+                     x:Name="btnStopService"
+                     Width="80"
+                     Margin="5,0"
+                     Height="24" Content="停止服务"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <ListBox x:Name="lbInfo" Margin="5,0"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBox Width="682" Height="24"
+                         x:Name="tbSend"
+                         VerticalContentAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button Content="发送" 
+                        Width="80"
+                        Height="24"
+                        Click="Button_Click"
+                        x:Name="btnSend"
+                        VerticalAlignment="Center"
+                        Margin="5,0"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
