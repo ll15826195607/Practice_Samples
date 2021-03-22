@@ -134,7 +134,7 @@ namespace WebSocketServer
                 {
                     workSocket = client
                 };
-                AddMessage(String.Format("{0}客户端已连接", client.RemoteEndPoint.ToString()));
+                AddMessage(String.Format("{0} 客户端已连接", client.RemoteEndPoint.ToString()));
                 proxSockets.Add(sw);
                 client.BeginReceive(new byte[0], 0, 0, SocketFlags.None, UpgradeCallback, sw);
                 server.BeginAccept(ConnectAccept, server);
@@ -196,7 +196,7 @@ namespace WebSocketServer
 
                 if (bytesReceived == 0)
                 {
-                    AddMessage(String.Format("{0}客户端退出", sw.workSocket.RemoteEndPoint.ToString()));
+                    AddMessage(String.Format("{0} 客户端退出", sw.workSocket.RemoteEndPoint.ToString()));
                     proxSockets.Remove(sw);
                 }
                 else
@@ -210,7 +210,7 @@ namespace WebSocketServer
                         return;
                     }
 
-                    AddMessage(string.Format("接收到客户端：{0}的消息是{1}", sw.workSocket.RemoteEndPoint.ToString(), WebSocketHelper.GetDataFromFrame(sw.buffer)));
+                    AddMessage(string.Format("接收到客户端：{0} 的消息是：{1}", sw.workSocket.RemoteEndPoint.ToString(), WebSocketHelper.GetDataFromFrame(sw.buffer)));
                     sw.buffer = new Byte[SocketWrapper.BUFFER_SIZE];
                     sw.workSocket.BeginReceive(new byte[0], 0, 0, SocketFlags.None, messageCallback, sw);
                 }

@@ -123,7 +123,7 @@ namespace WebSocketServer
             }
 
             // Return the decoded message 
-            return Encoding.Default.GetString(Data, dataIndex, frameData.DataLength);
+            return Encoding.UTF8.GetString(Data, dataIndex, frameData.DataLength);
         }
 
         /// <summary>Checks if a byte array is valid</summary>
@@ -144,7 +144,7 @@ namespace WebSocketServer
         public static byte[] GetFrameFromString(string Message, EOpcodeType Opcode = EOpcodeType.Text)
         {
             byte[] response;
-            byte[] bytesRaw = Encoding.Default.GetBytes(Message);
+            byte[] bytesRaw = Encoding.UTF8.GetBytes(Message);
             byte[] frame = new byte[10];
 
             int indexStartRawData = -1;
@@ -208,7 +208,7 @@ namespace WebSocketServer
             string longKey = Key + handshakeKey;
 
             SHA1 sha1 = SHA1.Create();
-            byte[] hashBytes = sha1.ComputeHash(Encoding.ASCII.GetBytes(longKey));
+            byte[] hashBytes = sha1.ComputeHash(Encoding.UTF8.GetBytes(longKey));
 
             return Convert.ToBase64String(hashBytes);
         }
