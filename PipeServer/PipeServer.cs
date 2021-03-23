@@ -34,15 +34,26 @@ namespace PipeServerDemo
         private void GetRequest(IAsyncResult result)
         {
             Int32 br = m_Pipe.EndRead(result);
-            Byte[] data = (Byte[])result.AsyncState;
-            data = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(data, 0, br).ToUpper().ToArray());
-            m_Pipe.BeginWrite(data, 0, data.Length, WriteDone, null);
+            if (br == 0)
+            {
+                Console.WriteLine(String.Format("管道已关闭:{0}", m_Pipe.GetImpersonationUserName()));
+                m_Pipe.Close();
+            }
+            else
+            {
+                Byte[] data = (Byte[])result.AsyncState;
+                String str = Encoding.UTF8.GetString(data, 0, br).ToUpper();
+                Console.WriteLine(String.Format("接收到客户端数据:{0}", str));
+                data = Encoding.UTF8.GetBytes(str);
+                m_Pipe.BeginWrite(data, 0, data.Length, WriteDone, null);
+                m_Pipe.BeginRead(data, 0, data.Length, GetRequest, data);
+            }
         }
 
         private void WriteDone(IAsyncResult result)
         {
             m_Pipe.EndWrite(result);
-            m_Pipe.Close();
+            //m_Pipe.Close();
         }
     }
 }

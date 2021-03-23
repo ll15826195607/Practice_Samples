@@ -29,9 +29,17 @@ namespace PipeClientDemo
         private void GetResponse(IAsyncResult result)
         {
             Int32 br = m_Pipe.EndRead(result);
-            Byte[] data = (Byte[])result.AsyncState;
-            Console.WriteLine("Server Response: " + Encoding.UTF8.GetString(data, 0, br));
-            m_Pipe.Close();
+            if (br == 0)
+            {
+                Console.WriteLine(String.Format("管道已关闭：{0}",m_Pipe));
+                m_Pipe.Close();
+            }
+            else
+            {
+                Byte[] data = (Byte[])result.AsyncState;
+                Console.WriteLine("Server Response: " + Encoding.UTF8.GetString(data, 0, br));
+                m_Pipe.BeginRead(data, 0, data.Length, GetResponse, data);
+            }
         }
     }
 }

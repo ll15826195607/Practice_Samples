@@ -10,10 +10,11 @@ namespace PipeClientDemo
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 10000; i++)
-            {
-                new PipeClient("localhost", "Request #" + i);
-            }
+            new PipeClient(".", "Request #");
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    new PipeClient("localhost", "Request #" + i);
+            //}
 
             Console.ReadLine();
         }

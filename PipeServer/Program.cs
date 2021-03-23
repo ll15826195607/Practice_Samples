@@ -16,7 +16,7 @@ namespace PipeServerDemo
                 new PipeServer();
 
             }
-            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+            //Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
             Console.WriteLine("Press <Enter> to terminate this server application");
             Console.ReadLine();
         }
