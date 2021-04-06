@@ -16,17 +16,28 @@ namespace SingleInstanceApp
         private static Mutex mutex = new Mutex(true, "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}");
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            if (mutex.WaitOne(TimeSpan.Zero,true))
+            Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            if (mutex.WaitOne(TimeSpan.Zero, true))
             {
-                mutex.ReleaseMutex();
+                SingleInstanceAppMonitor.Instance.Monitor();
+                LoginView login = new LoginView();
+                var dr = login.ShowDialog();
+                if (dr.HasValue && dr.Value)
+                {
+                    this.StartupUri = new Uri("pack://application:,,,/SingleInstanceApp;component/MainWindow.xaml", UriKind.RelativeOrAbsolute);
+                    base.OnStartup(e);
+                    Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+                    return;
+                }
+                else
+                {
+                    this.Shutdown();
+                }
             }
             else
             {
-                MessageBox.Show("已有相同程序正在运行!", "提示");
-                NativeMethods.PostMessage((IntPtr)NativeMethods.HWND_BROADCAST,NativeMethods.WM_SHOWME,IntPtr.Zero,IntPtr.Zero);
+                SingleInstanceAppMonitor.Instance.ReMonitor();
                 this.Shutdown();
-                return;
             }
         }
     }
